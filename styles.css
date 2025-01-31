@@ -1,8 +1,8 @@
 :root {
-    --primary-color: #1B2B65;
-    --secondary-color: #FF9776;
-    --accent-color: #FFC8A2;
-    --text-color: #1B2B65;
+    --primary-color: #1D3557;
+    --secondary-color: #F4A261;
+    --accent-color: #E9A23B;
+    --text-color: #264653;
     --light-text: #6B7280;
     --background-light: #F9FAFB;
     --white: #ffffff;
@@ -10,9 +10,9 @@
     --border-color: #E5E7EB;
 
     /* Gradient presets */
-    --brand-gradient: linear-gradient(135deg, #FF9776, #FFC8A2);
-    --primary-gradient: linear-gradient(90deg, #1B2B65, #2A3F8E);
-    --accent-gradient: linear-gradient(90deg, #FF9776, #FFC8A2);
+    --brand-gradient: linear-gradient(135deg, #F4A261, #E9A23B);
+    --primary-gradient: linear-gradient(90deg, #1D3557, #264653);
+    --accent-gradient: linear-gradient(90deg, #F4A261, #E9A23B);
 }
 
 * {
@@ -440,13 +440,13 @@ nav {
 
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+        box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.4);
     }
     70% {
-        box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+        box-shadow: 0 0 0 10px rgba(244, 162, 97, 0);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+        box-shadow: 0 0 0 0 rgba(244, 162, 97, 0);
     }
 }
 
@@ -551,7 +551,7 @@ nav {
     height: 1px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(79, 70, 229, 0.1) 50%, 
+        rgba(29, 53, 87, 0.1) 50%,  /* #1D3557 with opacity */
         transparent 100%
     );
 }
