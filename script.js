@@ -171,61 +171,12 @@ if (hero) {
     hero.addEventListener('mousemove', handleParallax);
 }
 
-// Animate dashboard stats on load
-function animateDashboardStats() {
-    const statBars = document.querySelectorAll('.dashboard-card .stat-bar div');
-    statBars.forEach((bar, index) => {
-        setTimeout(() => {
-            const width = bar.parentElement.style.width || '85%';
-            bar.style.width = width;
-        }, index * 200);
-    });
-}
-
-// Initialize animations when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    animateDashboardStats();
-});
-
-// Smooth scroll for the scroll indicator
-const scrollIndicator = document.querySelector('.scroll-indicator');
-if (scrollIndicator) {
-    scrollIndicator.addEventListener('click', () => {
-        const nextSection = hero.nextElementSibling;
-        if (nextSection) {
-            nextSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-}
-
 // Features Section Animations
 const featureCards = document.querySelectorAll('.feature-card[data-aos]');
 const featureObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('aos-animate');
-            
-            // Animate stats when card becomes visible
-            const stats = entry.target.querySelectorAll('.mini-stat .stat-number');
-            stats.forEach(stat => {
-                const value = stat.textContent;
-                let start = 0;
-                const end = parseInt(value) || 0;
-                const duration = 2000;
-                const increment = end / (duration / 16);
-                
-                const updateCounter = () => {
-                    start += increment;
-                    if (start < end) {
-                        stat.textContent = Math.round(start) + (value.includes('%') ? '%' : '');
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        stat.textContent = value;
-                    }
-                };
-                
-                updateCounter();
-            });
         }
     });
 }, {
@@ -237,26 +188,13 @@ featureCards.forEach(card => {
     featureObserver.observe(card);
 });
 
-// Add hover effect for feature cards
-const featureIconWrappers = document.querySelectorAll('.feature-icon-wrapper');
-featureIconWrappers.forEach(wrapper => {
-    const card = wrapper.closest('.feature-card');
-    
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const angleX = (y - centerY) / 20;
-        const angleY = (centerX - x) / 20;
-        
-        wrapper.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+// Smooth scroll for the scroll indicator
+const scrollIndicator = document.querySelector('.scroll-indicator');
+if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+        const nextSection = hero.nextElementSibling;
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
     });
-    
-    card.addEventListener('mouseleave', () => {
-        wrapper.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-    });
-}); 
+} 
