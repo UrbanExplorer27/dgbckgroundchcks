@@ -69,18 +69,6 @@ document.querySelectorAll('.feature-card').forEach(card => {
     observer.observe(card);
 });
 
-// Handle "Watch Demo" button click
-document.querySelector('a[href="#demo"]').addEventListener('click', (e) => {
-    e.preventDefault();
-    const videoContainer = document.querySelector('.video-container');
-    if (videoContainer) {
-        videoContainer.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'center'
-        });
-    }
-});
-
 // How It Works Section Interactions
 const stepsSection = document.querySelector('.how-it-works');
 const steps = document.querySelectorAll('.step');
@@ -187,6 +175,39 @@ const featureObserver = new IntersectionObserver((entries) => {
 featureCards.forEach(card => {
     featureObserver.observe(card);
 });
+
+// Form submission handling
+const contactForm = document.getElementById('contact-form');
+const successMessage = document.getElementById('success-message');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        try {
+            const formData = new FormData(contactForm);
+            await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            });
+            
+            // Show success message
+            successMessage.classList.add('show');
+            
+            // Clear form
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+            
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    });
+}
 
 // Smooth scroll for the scroll indicator
 const scrollIndicator = document.querySelector('.scroll-indicator');

@@ -1039,6 +1039,25 @@ nav {
     border: none;
 }
 
+.success-message {
+    display: none;
+    background: var(--success-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.success-message.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Footer */
 footer {
     background-color: var(--text-color);
@@ -1189,6 +1208,10 @@ footer {
 .form-group {
     position: relative;
     margin-bottom: 1.5rem;
+}
+
+.hidden {
+    display: none;
 }
 
 .form-group input {

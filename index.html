@@ -55,10 +55,6 @@
                                 <span>Start Free Trial</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
-                            <a href="#demo" class="secondary-button">
-                                <i class="fas fa-play"></i>
-                                <span>Watch Demo</span>
-                            </a>
                         </div>
                     </div>
                     <div class="hero-image">
@@ -288,21 +284,28 @@
             <div class="contact-content">
                 <h2>Ready to Get Started?</h2>
                 <p>Transform your property management process today.</p>
-                <form class="contact-form">
+                <div id="success-message" class="success-message">
+                    <p>Thank you for your interest! We'll be in touch with you shortly.</p>
+                </div>
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    <input type="hidden" name="form-name" value="contact" />
                     <div class="form-group">
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" required>
                         <label for="name">Full Name</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
                         <label for="email">Email Address</label>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone">
+                        <input type="tel" id="phone" name="phone">
                         <label for="phone">Phone Number</label>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="company">
+                        <input type="text" id="company" name="company">
                         <label for="company">Company Name</label>
                     </div>
                     <button type="submit" class="primary-button">Request Demo</button>
